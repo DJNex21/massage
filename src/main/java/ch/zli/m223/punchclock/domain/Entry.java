@@ -25,6 +25,10 @@ public class Entry {
     @Column(nullable = false)
     private LocalDateTime checkOut;
 
+
+    @ManyToOne
+    private Massageur massageur;
+
     public Long getId() {
         return id;
     }
