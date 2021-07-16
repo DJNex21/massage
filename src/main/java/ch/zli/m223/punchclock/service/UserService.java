@@ -1,9 +1,7 @@
 package ch.zli.m223.punchclock.service;
 
 import ch.zli.m223.punchclock.domain.ApplicationUser;
-import ch.zli.m223.punchclock.domain.Entry;
 import ch.zli.m223.punchclock.repository.ApplicationUserRepository;
-import ch.zli.m223.punchclock.repository.EntryRepository;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -64,7 +62,9 @@ public class UserService implements UserDetailsService {
      *
      * @param id the id
      */
-    public void deleteUser(long id) { userRepository.deleteById(id); }
+    public void deleteUser(long id) {
+        userRepository.deleteById(id);
+    }
 
     /**
      * Update user application user.

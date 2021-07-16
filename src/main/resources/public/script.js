@@ -22,6 +22,7 @@ const createEntry = (e) => {
     const formData = new FormData(e.target);
     const entry = {};
     entry['checkIn'] = dateAndTimeToDate(formData.get('checkInDate'), formData.get('checkInTime'));
+    entry['massageType'] = formData.get('massageType');
 
     fetch(`${URL}/entries`, {
         method: 'POST',
@@ -54,6 +55,7 @@ const editEntries = (e) => {
     const formData = new FormData(e.target);
     const entry = {};
     entry['checkIn'] = dateAndTimeToDate(formData.get('checkInDate'), formData.get('checkInTime'));
+    entry['massageType'] =formData.get('massageType');
     entry.id = updateEntry.id;
     fetch(`${URL}/entries`, {
         method: 'PUT',
@@ -121,7 +123,7 @@ const renderEntries = () => {
         row.appendChild(createCell(entry.id));
         row.appendChild(createCell(new Date(entry.checkIn).toLocaleString()));
         row.appendChild(createCell(entry.massageType))
-        row.appendChild(createCell(entry.user));
+        //row.appendChild(createCell(entry.user));
         //row.appendChild(createCell(entry.massageur));
         row.appendChild(createDeleteButton(entry));
         row.appendChild(createEditButton(entry));
