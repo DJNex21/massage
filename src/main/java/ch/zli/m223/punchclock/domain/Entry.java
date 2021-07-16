@@ -52,4 +52,5 @@ public class Entry {
     public void setCheckOut(LocalDateTime checkOut) {
         this.checkOut = checkOut;
     }
+
 }
