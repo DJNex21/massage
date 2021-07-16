@@ -1,13 +1,9 @@
-# M223: Punchclock
-Dies ist eine Beispielapplikation für das Modul M223.
+# M223: LB_C
+Beschreibung der LB_C bzw. LB3
 
-## Loslegen
-Folgende Schritte befolgen um loszulegen:
-1. Sicherstellen, dass JDK 12 installiert und in der Umgebungsvariable `path` definiert ist.
-1. Ins Verzeichnis der Applikation wechseln und über die Kommandozeile mit `./gradlew bootRun` oder `./gradlew.bat bootRun` starten
-1. Unittest mit `./gradlew test` oder `./gradlew.bat test` ausführen.
-1. Ein ausführbares JAR kann mit `./gradlew bootJar` oder `./gradlew.bat bootJar` erstellt werden.
+Die Applikaiton ist ein Tool für die Verwaltung von Terminen einer Massagepraxis.
+Ohne Login kann man sich nicht einloggen, deswegen gibt es eine Registrier Seite, auf welcher man einen Benutzer herstellen kann.
+Als regulärer Benutzer kann man seine Termine/Buchungen anschauen, aber nicht bearbeiten.
+Als Massageur bzw. Admin kann man die Termine verwalten d.h. ie Termine löschen oder bearbeiten.
+Dazu kann der Massageur die Kunden verwalten d.h. einen Kunden löschen, bearbeiten oder einen total neuen Kunden erstellen.
 
-Folgende Dienste stehen während der Ausführung im Profil `dev` zur Verfügung:
-- REST-Schnittstelle der Applikation: http://localhost:8081
-- Dashboard der H2 Datenbank: http://localhost:8081/h2-console
