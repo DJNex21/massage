@@ -6,7 +6,8 @@ let updateUser = {
 };
 
 const createUser = (appUser) => {
-    appUser.username = formData.get('username'), formData.get('password');
+    appUser.username = formData.get('username');
+    appUser.password = formData.get('password');
     fetch(`${URL}/users/sign-up`, {
         method: 'POST',
         headers: {
@@ -16,20 +17,8 @@ const createUser = (appUser) => {
     }).then((result) => {
         result.json().then((appUser) => {
             users.push(appUser);
-            //removeUser();
-            loginUser(appUser);
+            renderUser(appUser);
         });
-    });
-};
-const loginUser = (appUser) => {
-    fetch(`${URL}/login`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(appUser)
-    }).then((result) => {
-        window.localStorage.setItem('auth',result.headers.get("Authorization"));
     });
 };
 
