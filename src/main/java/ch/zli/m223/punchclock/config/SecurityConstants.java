@@ -8,5 +8,5 @@ public class SecurityConstants {
     public static final String HEADER_STRING = "Authorization";
     public static final String SIGN_UP_URL = "/users/sign-up";
     public static final String LOGIN_URL = "/login";
-
+    public static final String USERS_URL = "/users";
 }

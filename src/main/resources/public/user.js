@@ -6,9 +6,7 @@ let updateUser = {
 };
 
 const createUser = (appUser) => {
-
     appUser.username = formData.get('username'), formData.get('password');
-
     fetch(`${URL}/users/sign-up`, {
         method: 'POST',
         headers: {
@@ -18,8 +16,20 @@ const createUser = (appUser) => {
     }).then((result) => {
         result.json().then((appUser) => {
             users.push(appUser);
-            removeUser();
+            //removeUser();
+            loginUser(appUser);
         });
+    });
+};
+const loginUser = (appUser) => {
+    fetch(`${URL}/login`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(appUser)
+    }).then((result) => {
+        window.localStorage.setItem('auth',result.headers.get("Authorization"));
     });
 };
 
@@ -86,14 +96,16 @@ const createEditButton = (appUser) =>{
     let editbtn = document.createElement("button");
     editbtn.innerHTML = "Edit";
     editbtn.addEventListener("click", function () {
+        const usrname = appUser.username.split('T')
+        const pswrd = appUser.password.split('T')
+
 
         let username = document.getElementsByName("username");
         let password = document.getElementsByName("password");
 
-        checkInDate.item(0).value = checkIn[0]
-        checkInTime.item(0).value = checkIn[1]
-        checkOutDate.item(0).value = checkOut[0]
-        checkOutTime.item(0).value = checkOut[1]
+
+        username.item(0).value = usrname[0]
+        password.item(0).value = pswrd[0]
 
         updateUser.update = true;
         updateUser.id = appUser.id;
@@ -110,7 +122,7 @@ const renderUser = () => {
 
         row.appendChild(createCell(appUser.id));
         row.appendChild(createCell(appUser.user));
-        row.appendChild(createCell(appUser.contract));
+        //row.appendChild(createCell(appUser.contract));
         row.appendChild(createDeleteButton(appUser));
         row.appendChild(createEditButton(appUser));
 
@@ -120,6 +132,7 @@ const renderUser = () => {
 
 
 document.addEventListener('DOMContentLoaded', function(){
+    //document.getElementById("submit").addEventListener('submit',saveUser)
     const createUserForm = document.querySelector('#createUserForm');
     createUserForm.addEventListener('submit', saveUser);
     indexUsers();

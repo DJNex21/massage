@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title> Login Page </title>
+    <title> Register Page </title>
     <!-- <style>
         Body {
             font-family: Calibri, sans-serif;
@@ -49,16 +49,14 @@
     </style> -->
 </head>
 <body>
-<center><h1> Login Form </h1></center>
+<center><h1> Register Form </h1></center>
 <form style="margin-left: 2rem; margin-right: 2rem">
     <div class="container">
         <label>Username : </label>
         <input type="text" placeholder="Enter Username" name="username" required>
         <label>Password : </label>
         <input type="password" placeholder="Enter Password" name="password" required>
-        <button type="submit">Register</button>
-
-        <button type="button" class="cancelbtn"> Login Page</button>
+        <input type="submit" value="Register"  onclick="location.href='login.html'"/>
 
     </div>
 </form>

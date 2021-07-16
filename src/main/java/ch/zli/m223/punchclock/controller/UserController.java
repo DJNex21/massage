@@ -6,6 +6,7 @@ import ch.zli.m223.punchclock.repository.ApplicationUserRepository;
 import ch.zli.m223.punchclock.service.EntryService;
 import ch.zli.m223.punchclock.service.UserService;
 import org.glassfish.jersey.jaxb.internal.XmlJaxbElementProvider;
+import org.h2.engine.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
@@ -22,9 +23,11 @@ public class UserController {
     private UserService userService;
 
     public UserController(ApplicationUserRepository applicationUserRepository,
-                          BCryptPasswordEncoder bCryptPasswordEncoder) {
+                          BCryptPasswordEncoder bCryptPasswordEncoder,
+                          UserService userService) {
         this.applicationUserRepository = applicationUserRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+        this.userService = userService;
     }
 
     @PostMapping("/sign-up")
@@ -35,7 +38,7 @@ public class UserController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<ApplicationUser> getAllEntries() {
+    public List<ApplicationUser> getAllUsers() {
         return userService.findAll();
     }
 

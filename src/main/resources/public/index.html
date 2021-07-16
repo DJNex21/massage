@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Punchclock Client</title>
+    <title>Massage Client</title>
     <link rel="stylesheet" type="text/css" href="style.css"/>
     <script src="script.js" type="application/javascript"></script>
 </head>
@@ -14,9 +14,8 @@
     <label for="checkIn">Check in</label>
     <input type="date" name="checkInDate" id="checkIn" required>
     <input type="time" name="checkInTime" required>
-    <label for="checkOut">Check out</label>
-    <input type="date" name="checkOutDate" id="checkOut" required>
-    <input type="time" name="checkOutTime" required>
+    <label for="massageType">Massage Type</label>
+    <input type="text" name="massageType" id="massageType" required>
     <input type="submit" value="Save"/>
     <button name="editUsers"><a href="editUser.html" >Edit User</a></button>
 </form>
@@ -25,7 +24,6 @@
     <tr>
         <th>ID</th>
         <th>Check in</th>
-        <th>Check out</th>
     </tr>
     </thead>
     <tbody id="entryDisplay">

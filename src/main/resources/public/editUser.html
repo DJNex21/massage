@@ -1,24 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title> Edit Users </title>
+    <meta charset="UTF-8">
+    <title>Edit User</title>
+
     <script src="user.js" type="application/javascript"></script>
+
 </head>
-<body>
-<center><h1> Edit Users </h1></center>
-<form style="margin-left: 2rem; margin-right: 2rem">
-    <div class="container">
-        <label>Username : </label>
-        <input type="text" placeholder="Enter Username" name="username" required>
-        <label>Old Password : </label>
-        <input type="password" placeholder="Enter Password" name="Old Password" required>
-        <label>New Password : </label>
-        <input type="password" placeholder="Enter Password" name="New Password" required>
-        <button type="submit"><a href="index.html">Save</a> </button>
-
-
-    </div>
+<form id="createUserForm">
+    <input id="userNameInput" class="form-control" type="text" name="username" placeholder="Username">
+    <input id="passwordInput" class="form-control" type="password" name="password" placeholder="Password">
+    <input type="submit" value="Save" />
+    <button><a href="index.html">Return</a></button>
 </form>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Delete</th>
+        <th>Edit</th>
+    </tr>
+    </thead>
+    <tbody id="userDisplay">
+    <tr>
+        <td colspan="3">Loading...</td>
+    </tr>
+    </tbody>
+</table>
+
+<body>
+
 </body>
 </html>

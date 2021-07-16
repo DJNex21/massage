@@ -22,7 +22,6 @@ const createEntry = (e) => {
     const formData = new FormData(e.target);
     const entry = {};
     entry['checkIn'] = dateAndTimeToDate(formData.get('checkInDate'), formData.get('checkInTime'));
-    entry['checkOut'] = dateAndTimeToDate(formData.get('checkOutDate'), formData.get('checkOutTime'));
 
     fetch(`${URL}/entries`, {
         method: 'POST',
@@ -55,7 +54,6 @@ const editEntries = (e) => {
     const formData = new FormData(e.target);
     const entry = {};
     entry['checkIn'] = dateAndTimeToDate(formData.get('checkInDate'), formData.get('checkInTime'));
-    entry['checkOut'] = dateAndTimeToDate(formData.get('checkOutDate'), formData.get('checkOutTime'));
     entry.id = updateEntry.id;
     fetch(`${URL}/entries`, {
         method: 'PUT',
@@ -100,17 +98,12 @@ const createEditButton = (entry) =>{
     editbtn.innerHTML = "Edit";
     editbtn.addEventListener("click", function () {
         const checkIn = entry.checkIn.split('T')
-        const checkOut = entry.checkOut.split('T')
-
         let checkInDate = document.getElementsByName("checkInDate");
         let checkInTime = document.getElementsByName("checkInTime");
-        let checkOutDate = document.getElementsByName("checkOutDate");
-        let checkOutTime = document.getElementsByName("checkOutTime");
+        entry.getElementsByName('massageType')
 
         checkInDate.item(0).value = checkIn[0]
         checkInTime.item(0).value = checkIn[1]
-        checkOutDate.item(0).value = checkOut[0]
-        checkOutTime.item(0).value = checkOut[1]
 
         updateEntry.update = true;
         updateEntry.id = entry.id;
@@ -127,9 +120,9 @@ const renderEntries = () => {
 
         row.appendChild(createCell(entry.id));
         row.appendChild(createCell(new Date(entry.checkIn).toLocaleString()));
-        row.appendChild(createCell(new Date(entry.checkOut).toLocaleString()));
+        row.appendChild(createCell(entry.massageType))
         row.appendChild(createCell(entry.user));
-        row.appendChild(createCell(entry.massageur));
+        //row.appendChild(createCell(entry.massageur));
         row.appendChild(createDeleteButton(entry));
         row.appendChild(createEditButton(entry));
 

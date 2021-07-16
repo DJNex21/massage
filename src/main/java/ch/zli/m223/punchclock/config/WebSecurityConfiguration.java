@@ -15,8 +15,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import static ch.zli.m223.punchclock.config.SecurityConstants.LOGIN_URL;
-import static ch.zli.m223.punchclock.config.SecurityConstants.SIGN_UP_URL;
+import static ch.zli.m223.punchclock.config.SecurityConstants.*;
 
 
 @EnableWebSecurity
@@ -36,10 +35,15 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "*.css").permitAll()
                 .antMatchers(HttpMethod.GET, "*.html").permitAll()
                 .antMatchers(HttpMethod.GET, "*.js").permitAll()
+                .antMatchers(HttpMethod.GET, "/**/**.*").permitAll()
+                .antMatchers(HttpMethod.GET, USERS_URL).permitAll()
+                .antMatchers(HttpMethod.POST, USERS_URL).permitAll()
+                .antMatchers(HttpMethod.DELETE, USERS_URL).permitAll()
+                .antMatchers(HttpMethod.PUT, USERS_URL).permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/register.html").permitAll()
+                .loginPage("/login.html").permitAll()
                 .loginProcessingUrl(LOGIN_URL)
                 .and()
                 .addFilter(new JWTAuthenticationFilter(authenticationManager()))
