@@ -14,10 +14,18 @@ import java.util.List;
 
 import static java.util.Collections.emptyList;
 
+/**
+ * The type User service.
+ */
 @Service
 public class UserService implements UserDetailsService {
     private ApplicationUserRepository userRepository;
 
+    /**
+     * Instantiates a new User service.
+     *
+     * @param userRepository the user repository
+     */
     public UserService(ApplicationUserRepository userRepository) {
         this.userRepository = userRepository;
     }
@@ -32,16 +40,38 @@ public class UserService implements UserDetailsService {
     }
 
 
+    /**
+     * Create application user application user.
+     *
+     * @param user the user
+     * @return the application user
+     */
     public ApplicationUser createApplicationUser(ApplicationUser user) {
         return userRepository.saveAndFlush(user);
     }
 
+    /**
+     * Find all list.
+     *
+     * @return the list
+     */
     public List<ApplicationUser> findAll() {
         return userRepository.findAll();
     }
 
+    /**
+     * Delete user.
+     *
+     * @param id the id
+     */
     public void deleteUser(long id) { userRepository.deleteById(id); }
 
+    /**
+     * Update user application user.
+     *
+     * @param user the user
+     * @return the application user
+     */
     public ApplicationUser updateUser(ApplicationUser user) {
         return userRepository.save(user);
     }

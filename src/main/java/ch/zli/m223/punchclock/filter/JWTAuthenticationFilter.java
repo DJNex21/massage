@@ -20,9 +20,17 @@ import java.util.Date;
 import static ch.zli.m223.punchclock.config.SecurityConstants.*;
 import static com.auth0.jwt.algorithms.Algorithm.HMAC512;
 
+/**
+ * The type Jwt authentication filter.
+ */
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     private AuthenticationManager authenticationManager;
 
+    /**
+     * Instantiates a new Jwt authentication filter.
+     *
+     * @param authenticationManager the authentication manager
+     */
     public JWTAuthenticationFilter(AuthenticationManager authenticationManager) {
         this.authenticationManager = authenticationManager;
     }

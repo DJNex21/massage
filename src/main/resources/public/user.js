@@ -6,6 +6,7 @@ let updateUser = {
 };
 
 const createUser = (appUser) => {
+    const formData = new FormData(appUser.target);
     appUser.username = formData.get('username');
     appUser.password = formData.get('password');
     fetch(`${URL}/users/sign-up`, {
@@ -42,6 +43,7 @@ const removeUser = (id) => {
 }
 
 const editUser = (appUser) => {
+    const formData = new FormData(appUser.target);
     appUser.username = formData.get('username'), formData.get('password');
     appUser.id = updateUser.id;
     fetch(`${URL}/users`, {

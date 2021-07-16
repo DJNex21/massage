@@ -18,11 +18,20 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import static ch.zli.m223.punchclock.config.SecurityConstants.*;
 
 
+/**
+ * The type Web security configuration.
+ */
 @EnableWebSecurity
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     private UserService userDetailsService;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    /**
+     * Instantiates a new Web security configuration.
+     *
+     * @param userDetailsService    the user details service
+     * @param bCryptPasswordEncoder the b crypt password encoder
+     */
     public WebSecurityConfiguration(UserService userDetailsService, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userDetailsService = userDetailsService;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
@@ -57,6 +66,11 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder);
     }
 
+    /**
+     * Cors configuration source cors configuration source.
+     *
+     * @return the cors configuration source
+     */
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();

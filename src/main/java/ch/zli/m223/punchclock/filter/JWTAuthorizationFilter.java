@@ -16,8 +16,16 @@ import java.util.ArrayList;
 
 import static ch.zli.m223.punchclock.config.SecurityConstants.*;
 
+/**
+ * The type Jwt authorization filter.
+ */
 public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
 
+    /**
+     * Instantiates a new Jwt authorization filter.
+     *
+     * @param authManager the auth manager
+     */
     public JWTAuthorizationFilter(AuthenticationManager authManager) {
         super(authManager);
     }
